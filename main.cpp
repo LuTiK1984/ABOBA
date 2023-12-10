@@ -16,7 +16,7 @@ void main()
 	system("chcp 1251");
 
 	PrintScript("Иди нахуй сука\n");
-	PrintScript("Иди нахуй сука\n", 300);
+	PrintScript("Вы точно хотите съесть бананы?\n", 180);
 
 	system("pause > null");
 }
