@@ -1,7 +1,7 @@
 #include <iostream>
 #include <windows.h>
 
-void PrintScript(const char text[],int TimeToSleep = 50) 
+void PrintScript(const char text[], int TimeToSleep = 50) 
 {
 	for (int i = 0; text[i] != '\0'; i++)
 	{
