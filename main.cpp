@@ -10,7 +10,6 @@ void PrintScript(const char text[], int TimeToSleep = 50)
 	}
 }
 
-
 void main() 
 {
 	system("chcp 1251");
