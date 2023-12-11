@@ -5,7 +5,10 @@ void PrintScript(const char text[], int TimeToSleep = 20)
 {
 	for (int i = 0; text[i] != '\0'; i++)
 	{
-		if (text[i] == '%') { system("pause > null"); continue;}
+		if (text[i] == '%') { 
+			system("pause > null"); 
+			continue;
+		}
 		printf("%c", text[i]);
 		Sleep(TimeToSleep);
 	}
@@ -59,15 +62,16 @@ void main()
 			PrintScript("\nУвидев на одной из них изображение сочных и спелых бананов, я поспешил ее открыть. %");
 			PrintScript("\nКакого было мое удивление, когда я обнаружил внутри сырой коробки n бананов. %");
 			
-			printf("\n\n\t==> Теперь у меня бананов: _ <==" );
+			printf("\n\n\t____________________________________");
+			printf("\n\t==>   Теперь у меня бананов: _   <==\n" );
+			printf("\t____________________________________\n");
 			break;
 		case 2:
-
 			break;
 		}
 		break;
 	case 2:
-		PrintScript("");
+		
 		break;
 	}
 }
