@@ -32,7 +32,7 @@ void Choice2(int &choice)
 
 void Check_Banana()
 {
-	printf("===> У меня теперь бананов: %i <===", player.bananas);
+	printf("\n\t===> У меня теперь бананов: %i <===\n", player.bananas);
 }
 
 
