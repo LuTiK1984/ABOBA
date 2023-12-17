@@ -43,6 +43,7 @@ void Check_Hp()
 
 
 
+#pragma region Act1
 
 void Act1__End()
 {
@@ -155,6 +156,8 @@ void Act_1__Begin() {
 		break;
 	}
 }
+
+#pragma endregion
 
 int main() 
 {
