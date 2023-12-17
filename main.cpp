@@ -3,10 +3,10 @@
 
 struct Player
 {
-	int hp;
-	int moral;
-	int bananas;
-};
+	int hp = 5;
+	int moral = 5;
+	int bananas = 0;
+}player;
 
 void PrintScript(const char text[], int TimeToSleep = 20) 
 {
@@ -28,6 +28,11 @@ void Choice2(int &choice)
 		printf("\nЯ...   ");
 		scanf_s("%i", &choice);
 	} while (choice != 1 && choice != 2);
+}
+
+void Check_Banana()
+{
+	printf("===> У меня теперь бананов: %i <===", player.bananas);
 }
 
 void Act_1__Begin() {
@@ -57,8 +62,8 @@ void Act_1__Begin() {
 
 void Act_1__Go_to_walk()
 {
-	PrintScript("В голове было пусто, поэтому я решил пробежаться по зимнему лесу. %\nОт свежего воздуха, мой разум начал проясняться. %");
-	PrintScript("Мысли начали раскладываться по полочкам, и тут я понял, что уже на протяжении полуминуты \nя стою на месте и пристально изучаю предмет, непонятной сонному человеку природы. %");
+	PrintScript("\t\nВ голове было пусто, поэтому я решил пробежаться по зимнему лесу. %\nОт свежего воздуха, мой разум начал проясняться. %");
+	PrintScript("\nМысли начали раскладываться по полочкам, и тут я понял, что уже на протяжении полуминуты \nя стою на месте и пристально изучаю предмет, непонятной сонному человеку природы. %");
 
 	PrintScript("\n\n\tЧто же это такое?... %");
 	int choice;
@@ -69,11 +74,33 @@ void Act_1__Go_to_walk()
 	Choice2(choice);
 
 	switch (choice)
+	{
+	case 1:
+		Act_1__Take_Banana();
+		break;
+	case 2:
+		player.hp += 1;
+		Act_1__Dont_take_Banana();
+		break;
+	}
 }
 
+void Act_1__Take_Banana()
+{
+	PrintScript("\n\tЯ подошел к неизвестному объекту. Увидев на нем изображение сочных и спелых бананов, я понял, что это коробка. %");
+	PrintScript("\nКакого было мое удивление, когда я обнаружил внутри сырой коробки 2 банана. %");
+	player.bananas += 2;
+	Check_Banana();
+	Act_1__Dont_take_Banana();
+}
+
+void Act_1__Dont_take_Banana()
+{
+	PrintScript("\n\tВремени оставалось не так много и я поспешил на родное Ранчо. %\nБыстро добравшись до дома, я продолжил свою рутину. %");
+}
 void Act_1__Go_to_para()
 {
-
+	
 }
 void main() 
 {
