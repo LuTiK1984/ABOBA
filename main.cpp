@@ -32,12 +32,12 @@ void Choice(int &choice)
 
 void Check_Banana()
 {
-	printf("\n\t===> У меня теперь бананов: %i <===\n", player.bananas);
+	printf("\n\n\t===> У меня теперь бананов: %i <===\n", player.bananas);
 }
 
 void Check_Hp()
 {
-	printf("\n\t===> У меня теперь здоровья: %i <===\n", player.hp);
+	printf("\n\n\t===> У меня теперь здоровья: %i <===\n", player.hp);
 }
 
 
