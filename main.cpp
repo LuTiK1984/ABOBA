@@ -167,7 +167,6 @@ void Act_3__Stay()
 
 #pragma region Act2
 
-
 void Act_2__End()
 {
 	PrintScript("\n\n\tМы начали решать, что нам стоит делать дальше. Я выдвинул свое мнение: %");
