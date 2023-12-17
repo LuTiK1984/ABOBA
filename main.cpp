@@ -42,7 +42,7 @@ void Check_Hp()
 
 void Act_1__Go_to_para()
 {
-	PrintScript("\n\tНаспех переодевшись я захватил свой обед и поспешил на пары. %");
+	PrintScript("\n\n\tНаспех переодевшись я захватил свой обед и поспешил на пары. %");
 	player.bananas += 1;
 	Check_Banana();
 	PrintScript("\nПо пути в свой прекрасный ВУЗ, я заметил мужчину средних лет, который пытался выехать со двора на своей машине. %");
@@ -70,8 +70,8 @@ void Act_1__Go_to_walk()
 	PrintScript("\n\n\tЧто же это такое?... %");
 	int choice;
 
-	printf("\n\n\t1 --- Изучить непонятный предмет ---");
-	printf("\n\t2 --- Продолжить отрезвляющую ото сна деятельность ---\n");
+	printf("\n\n\t1 --- Изучу непонятный предмет ---");
+	printf("\n\t2 --- Продолжу отрезвляющую ото сна деятельность ---\n");
 
 	Choice(choice);
 
@@ -82,6 +82,7 @@ void Act_1__Go_to_walk()
 		break;
 	case 2:
 		player.hp += 1;
+		Check_Hp();
 		Act_1__Dont_take_Banana();
 		break;
 	}
@@ -97,7 +98,7 @@ void Act_1__Begin() {
 	int choice;
 
 	printf("\n\n\t1 --- Пойду на пробежку в лес ---");
-	printf("\n\t2 --- Пойду на пары ---\n");
+	printf("\n\t2 --- Пойду на пару в ВУЗ ---\n");
 
 	Choice(choice);
 
@@ -111,6 +112,7 @@ void Act_1__Begin() {
 		break;
 	}
 }
+
 int main() 
 {
 	system("chcp 1251");
