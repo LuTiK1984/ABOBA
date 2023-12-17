@@ -1,5 +1,7 @@
 #include <iostream>
 #include <windows.h>
+#include <ctime>
+
 
 #pragma region Funcs
 struct Player
@@ -45,9 +47,62 @@ void Check_Hp()
 
 #pragma region Act3
 
-void Act_3__Gone()
+void Act_3__WinBOMG() 
 {
 
+}
+
+void Act_3__LoseBOMG()
+{
+
+}
+void Act_3__Go_to_park()
+{
+	PrintScript("\n\n\tИдея погулять в парке показалась мне неплохой. %\nЯ быстро зашагал по хрустящему снегу и вскоре достиг желанного места. %");
+	PrintScript("\nВ парке оказалось немноголюдно. Присев на скамейку, %\nя заметил, что рядом со мной находится маргинальной натуры личность (бомж). %");
+	PrintScript("\nЭтот человек жадно поедал восхитительного вкуса банан. %\nВ каждом укусе чувствовавось прекрасное сочетание солнечной спелости и приятной доли сладости. %");
+	PrintScript("\nЯ понял, что без этого банана я отсюда НЕ УЙДУ!! %\nПытаясь выглядеть дружелюбно, я поинтересовался, может ли он поделиться бананом. %");
+	PrintScript("\nВ ответ на мою казалось бы милую просьбу, я получил грубый отказ. %\nВ его глазах читалась явная неприязнь. %");
+	PrintScript("\nНепотерпев такого отношения к себе, я начал махаться с бомжом. %");
+	
+	int fight = rand()%(2-1+1)+1;
+	
+	if (fight == 1)
+	{
+		Act_3__WinBOMG();
+	}
+	else
+	{
+		Act_3__LoseBOMG();
+	}
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+}
+
+void Act_3__Go_to_monastery()
+{
+
+}
+
+void Act_3__Gone()
+{
+	
+	int choice;
+	
+	Choice(choice);
+
+	switch (choice)
+	{
+	case 1:
+		Act_3__Go_to_park();
+		break;
+	case 2:
+		Act_3__Go_to_monastery();
+		break;
+	}
 }
 
 void Minesweeper()
@@ -265,6 +320,8 @@ int main()
 {
 	system("chcp 1251");
 	system("mode 100, 80");
+	int seed = time(NULL);
+	srand(seed);
 	
 	Act_1__Begin();
 	
