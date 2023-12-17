@@ -21,7 +21,7 @@ void PrintScript(const char text[], int TimeToSleep = 20)
 	}
 }
 
-void Choice2(int &choice) 
+void Choice(int &choice) 
 {
 	do
 	{
@@ -35,7 +35,10 @@ void Check_Banana()
 	printf("\n\t===> У меня теперь бананов: %i <===\n", player.bananas);
 }
 
-
+void Check_Hp()
+{
+	printf("\n\t===> У меня теперь здоровья: %i <===\n", player.hp);
+}
 
 void Act_1__Go_to_para()
 {
@@ -70,7 +73,7 @@ void Act_1__Go_to_walk()
 	printf("\n\n\t1 --- Изучить непонятный предмет ---");
 	printf("\n\t2 --- Продолжить отрезвляющую ото сна деятельность ---\n");
 
-	Choice2(choice);
+	Choice(choice);
 
 	switch (choice)
 	{
@@ -96,7 +99,7 @@ void Act_1__Begin() {
 	printf("\n\n\t1 --- Пойду на пробежку в лес ---");
 	printf("\n\t2 --- Пойду на пары ---\n");
 
-	Choice2(choice);
+	Choice(choice);
 
 	switch (choice)
 	{
