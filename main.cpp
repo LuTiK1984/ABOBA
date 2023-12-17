@@ -102,11 +102,12 @@ void Act_1__Go_to_para()
 {
 	
 }
-void main() 
+int main() 
 {
 	system("chcp 1251");
 	system("mode 100, 80");
 	
 	Act_1__Begin();
 	
+	return 0;
 }
