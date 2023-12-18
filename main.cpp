@@ -11,7 +11,7 @@ struct Player
 	int bananas = 0;
 }player;
 
-void PrintScript(const char text[], int TimeToSleep = 15) 
+void PrintScript(const char text[], int TimeToSleep = 10) 
 {
 	for (int i = 0; text[i] != '\0'; i++)
 	{
@@ -93,11 +93,6 @@ void Act_3__Go_to_park()
 	{
 		Act_3__LoseBOMG();
 	}
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
 }
 
 void Act_3__Go_to_monastery()
@@ -122,7 +117,7 @@ void Act_3__Gone()
 		Act_3__Go_to_park();
 		break;
 	case 2:
-		Act_3__Go_to_monastery();
+		Act_3__Gone_to_monastery();
 		break;
 	}
 }
@@ -157,9 +152,9 @@ void Act_3__Stay()
 	PrintScript("\nПервая мина была найдена. %Мои опасения подтвердились. %\nЭто действительно минное поле. %Я приступил к его разминированию. %");
 	
 	Minesweeper();
-	bool IsWin = 1;
+	bool MinesweeperIsWin = true;
 	
-	if (IsWin) Act_3__SweeperWin();
+	if (MinesweeperIsWin) Act_3__SweeperWin();
 	else {player.moral -= 1; Act_3__SweeperLose();}
 }
 
