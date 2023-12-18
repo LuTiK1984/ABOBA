@@ -11,7 +11,7 @@ struct Player
 	int bananas = 0;
 }player;
 
-void PrintScript(const char text[], int TimeToSleep = 20) 
+void PrintScript(const char text[], int TimeToSleep = 15) 
 {
 	for (int i = 0; text[i] != '\0'; i++)
 	{
