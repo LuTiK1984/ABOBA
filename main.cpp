@@ -106,7 +106,8 @@ void Act_3__Go_to_monastery()
 
 void Act_3__Gone()
 {
-	
+	printf("\n\n\t1 --- Пойду гулять в парк ---");
+	printf("\n\t2 --- Пойти в монастырь ---\n");
 	int choice;
 	
 	Choice(choice);
