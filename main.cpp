@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <ctime>
 
+bool KNBIsWin = false;
 
 #pragma region Funcs
 struct Player
@@ -111,7 +112,7 @@ void Act_3__Gone_to_monastery()
 	PrintScript("\nПроведя десяток лет в этом благословенном уголке, я осознал что жизнь — это всегда результат нашего выбора. %");
 	PrintScript("\nМы выбираем — сказать правду или стыдливо молчать, расстроиться и обозлиться \nили превратить все в шутку, о которой будешь еще долго вспоминать. %");
 	PrintScript("\nЖизнь так устроена, что мы вынуждены делать выбор каждый день и только время покажет, был ли он верным. %");
-	PrintScript("\n\n\t\tКОНЕЦЪ %", 5);
+	PrintScript("\n\n\t\tКОНЕЦЪ %", 20);
 }
 
 void Act_3__Gone()
@@ -188,14 +189,43 @@ void Act_3__Stay()
 	else {player.moral -= 1; Act_3__SweeperLose();}
 }
 
-void Act_3__Machina()
+void Act_3__Death()
+{
+	PrintScript("Вы и ваши друзья замерзли беспомощно насмерть...%");
+	PrintScript("\n\n\t\tКОНЕЦЪ %", 20);
+}
+
+void Act_3__Mach_Win()
+{
+
+}
+
+void Act_3__Machina(bool KNBIsWin)
 {
 	int Win = 0,RAND;
 	while (Win == 0)
 	{
 		RAND = rand() % (2 - 1 + 1) + 1;
+		if (RAND == 1) Win = 1;
+		else { player.moral--; player.hp--; Check_Hp(); system("pause > null"); }
+		if (player.hp == 0) {
+			if (KNBIsWin == false) { 
+				Act_3__Mach_Win(); 
+			} 
+			else {
+				Act_3__Death();
+			}
+		}
 
 	}
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
 }
 
 void Act_3__Rodnik()
@@ -205,22 +235,7 @@ void Act_3__Rodnik()
 	PrintScript("\nПо пути мы наслаждались красотой природы и беседовали, напевая Женькину (нет) любимую композицию. %\nРодник был уединенным местом, окруженным заснеженными деревьями. %");
 	PrintScript("\nПеред нами был небольшой с виду сугроб. %Ева на своем многодневном опыте решила преодолевать преграду ходом. %");
 	PrintScript("\nНичего хорошего из этого не вышло. %\nМы сели. %\nСели ТОТАЛЬНО. %\nНедолго думая решили толкать.  %");
-	
-	
-	
-	
-	
-	
-	
-	
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
+	Act_3__Machina(KNBIsWin);
 }
 
 void Act_3__BK()
@@ -304,7 +319,7 @@ void Act_2__End()
 
 bool KNB()
 {
-	bool IsWin = true;
+	bool IsWin = false;
 	return IsWin;
 }
 
@@ -315,9 +330,9 @@ void Act_2__Begin()
 	PrintScript("\nВскоре мне это надоело, остаток пары я решил провести на просторах интернета. %\nМоя скука продолжалась до конца пары, а когда преподаватель объявил о конце лекции, \nя пулей вылетел из аудитории в направлении комнаты для совещаний. %");
 	PrintScript("\nТам я наконец встретил своих друзей. %Один из них был особенно изнеможден. %\nСерега выглядит очень подавленно, подумал я. %");
 	PrintScript("\nОн попросил у меня банан, но просто так отдавать его я не хотел. %\nМы решили сыграть в очень азартную игру, ставкой в которой будет банан. %");
-	bool IsWin = KNB();
+	bool KNBIsWin = KNB();
 	
-	if (IsWin == 1) {
+	if (KNBIsWin == 1) {
 		player.moral++;
 		PrintScript("\n\n\tПо результату игры я сохранил свои бананы, а бедный Серега продолжил страдать в муках истощения. %");
 	}
