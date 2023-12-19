@@ -44,8 +44,15 @@ void Check_Hp()
 }
 #pragma endregion
 
+void Good_Ending()
+{
 
+}
 
+void Bad_Ending()
+{
+
+}
 #pragma region Act3
 
 void Act_3__GoneEnd()
@@ -54,6 +61,8 @@ void Act_3__GoneEnd()
 	player.hp -= 1;
 	player.moral -= 1;
 	Check_Hp();
+	if (player.moral >= 5) Good_Ending();
+	else Bad_Ending();
 }
 
 void Act_3__WinBOMG() 
@@ -95,13 +104,14 @@ void Act_3__Go_to_park()
 	}
 }
 
-void Act_3__Go_to_monastery()
+void Act_3__Gone_to_monastery()
 {
 	PrintScript("\n\n\tНа меня снизошло озарение. %Я вдруг понял насколько несправедливым человеком я являюсь. %");
 	PrintScript("\nВсе совершенные мной поступки тяжелым грузом легли на мои плечи. %\nНе в силах вынести всех своих грехов, я решил что меня исправит только монастырь.... %");
 	PrintScript("\nПроведя десяток лет в этом благословенном уголке, я осознал что жизнь — это всегда результат нашего выбора. %");
 	PrintScript("\nМы выбираем — сказать правду или стыдливо молчать, расстроиться и обозлиться \nили превратить все в шутку, о которой будешь еще долго вспоминать. %");
 	PrintScript("\nЖизнь так устроена, что мы вынуждены делать выбор каждый день и только время покажет, был ли он верным. %");
+	PrintScript("\n\n\t\tКОНЕЦЪ %", 5);
 }
 
 void Act_3__Gone()
@@ -123,16 +133,33 @@ void Act_3__Gone()
 	}
 }
 
-void Minesweeper()
+bool Minesweeper()
 {
+	bool IsWin = true;
+	return IsWin;
+}
 
+bool Act_3__TikTakToe()
+{
+	bool IsWin = true;
+	return IsWin;
+}
+
+void Act_3__Go_Home()
+{
+	PrintScript("\n\n\tСрок пары был отмотан, и я двинулся в сторону дома. По пути домой, я постоянно кашлял. %");
+	PrintScript("\n\"Остаточное\" - подумал я. %Но, когда я добрался до дома, мое здоровье меня в покое не оставило, \nи как Истинный Шрек я не стал лечиться и просто лег спать. %");
+	
+	if (player.moral >= 5) Good_Ending();
+	else Bad_Ending();
 }
 
 void Act_3__SweeperWin()
 {
-	PrintScript("\n\n\tЯ очнулся и понял, что пролежал так целый час. %Вторую пару я пропустил и решил пойти на третью. %");
+	
 	PrintScript("\nЭто была наискучнейшая пара истории. %Я как обычно занимался своими делами. %\nВ этот раз мне задали починить программу другого первокурсника.");
-	Act_3__Gone();
+	Act_3__TikTakToe();
+	Act_3__Go_Home();
 }
 
 void Act_3__SweeperLose()
@@ -144,7 +171,7 @@ void Act_3__SweeperLose()
 void Act_3__Stay()
 {
 	PrintScript("\n\n\tМне не понравилась ни одна из идей ребят и я, как порядочный студент, решил остаться на парах. \nСпускаясь по лестнице, я, нежданно-негаданно навернулся и сильно ударился головой. %");
-	PrintScript("\n\n\t..... %", 5);
+	PrintScript("\n\n\t..... %", 20);
 	PrintScript("\nПока я откисал лежа на холодном полу, мне причудилось престранное видение. %\nЯ веду грузовик. %Справа от меня сидит мой верный товарищ Серега. %");
 	PrintScript("\nМы были одеты в военную форму, а над нами свистели ракеты. %\nЭто был Афганистан, 1988 год. %");
 	PrintScript("\n\"МАХАТЬ!!!\" - вдруг прокричал Серега. Я экстренно затормозил. %\nНа вопрос что случилось он произнес дрожащим голосом: %\n\"Впереди красная табличка... Брат, ты знаешь, что после того инцидента я их чертовски боюсь...\". %");
@@ -155,8 +182,67 @@ void Act_3__Stay()
 	Minesweeper();
 	bool MinesweeperIsWin = true;
 	
-	if (MinesweeperIsWin) Act_3__SweeperWin();
+	if (MinesweeperIsWin) { player.moral++; 
+	PrintScript("\n\n\tЯ очнулся и понял, что пролежал так целый час. %Вторую пару я пропустил и решил пойти на третью. %"); 
+	Act_3__SweeperWin(); }
 	else {player.moral -= 1; Act_3__SweeperLose();}
+}
+
+void Act_3__Rodnik()
+{
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+}
+
+void Act_3__BK()
+{
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+	PrintScript(" %");
+}
+
+void Act_3__Drive()
+{
+	PrintScript("\n\n\tМне понравилась одна из идей ребят, и я согласился с ними покататься. %");
+	PrintScript("Но мы не знали куда нам направиться. Я предложил отправиться: %");
+	
+	int choice;
+
+	printf("\n\n\t1 --- На родник ---");
+	printf("\n\t2 --- В БК ---\n");
+
+	Choice(choice);
+
+	switch (choice)
+	{
+	case 1:
+		Act_3__Rodnik();
+		break;
+	case 2:
+		Act_3__BK();
+		break;
+	}
 }
 
 #pragma endregion
@@ -173,7 +259,7 @@ void Act_2__End()
 		printf("\n\t2 --- Останусь на парах ---\n");
 	if (player.moral >= 6) 
 	{
-		printf("\t3 --- Хочу уехать ---\n");
+		printf("\t3 --- Хочу уехать с друзьями ---\n");
 		do
 		{
 			printf("\nЯ...   ");
