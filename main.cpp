@@ -197,7 +197,10 @@ void Act_3__Death()
 
 void Act_3__Mach_Win()
 {
-
+	PrintScript("\n\n\tНаконец вытолкавшись, мы уставшие поехали домой. %Ева с немыслимой скоростью заходила во все повороты боком. %");
+	PrintScript("\nДобравшись до города, мы отправились по домам. %Приключений на сегодня было достаточно. %");
+	if (player.moral >= 5) Good_Ending();
+	else Bad_Ending();
 }
 
 void Act_3__Machina(bool KNBIsWin)
@@ -218,14 +221,6 @@ void Act_3__Machina(bool KNBIsWin)
 		}
 
 	}
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
 }
 
 void Act_3__Rodnik()
@@ -240,19 +235,9 @@ void Act_3__Rodnik()
 
 void Act_3__BK()
 {
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
-	PrintScript(" %");
+	PrintScript("\n\n\tНе изменяя своим традициям, мы направились в наше любимое заведение - БК. %");
+	PrintScript("\nТам мы отлично провели время, восстановили силы и обсудили какую Ниву стоит выбрать Женьке. %\nДовольные мы отправились обратно в ВУЗ.  %");
+	Act_3__SweeperWin();
 }
 
 void Act_3__Drive_Begin()
